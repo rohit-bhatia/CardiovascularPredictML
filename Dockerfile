@@ -3,5 +3,6 @@ COPY . /usr/app/
 EXPOSE 80
 WORKDIR /usr/app/
 RUN pip install --upgrade pip==20.0.2
-RUN pip --no-cache-dir --disable-pip-version-check install -r requirements.txt
+RUN apt-get uninstall python3-sklearn python3-sklearn-lib python3-sklearn-doc
+RUN pip --no-cache-dir install -r requirements.txt
 CMD python flask_api.py
