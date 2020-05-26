@@ -6,14 +6,12 @@ RUN pip install --upgrade pip==20.0.2
 RUN pip --no-cache-dir install -r requirements.txt
 
 RUN apt-get install python-setuptools -y
-RUN python setup.py install
-RUN python setup.py build 
-RUN python setup.py build_ext
-RUN python setup.py sdist
-RUN python setup.py bdist
-RUN python setup.py bdist_wheel
-RUN cd dist
-RUN pip install ./xgboost-1.0.0.tar.gz
-RUN python setup.py develop 
+RUN apt-get -y install cmake protobuf-compiler
+RUN git clone --recursive https://github.com/dmlc/xgboost
+RUN cd xgboost
+RUN mkdir build
+RUN cd build
+RUN cmake ..
+RUN make -j$(nproc)
 
 CMD python flask_api.py
