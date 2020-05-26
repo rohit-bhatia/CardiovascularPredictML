@@ -5,7 +5,7 @@ WORKDIR /usr/app/
 RUN pip install --upgrade pip==20.0.2
 RUN pip --no-cache-dir install -r requirements.txt
 
-RUN sudo apt-get install python-setuptools
+RUN apt-get install python-setuptools
 RUN python setup.py install
 RUN python setup.py build 
 RUN python setup.py build_ext
