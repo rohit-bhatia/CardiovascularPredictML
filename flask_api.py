@@ -14,7 +14,7 @@ classifier = pickle.load(pickle_in)
 @app.route('/')
 def welcome():
     a= 10
-    return "str" + " helper"
+    return "str" + " helper1"
 
 
 if __name__=='__main__':
