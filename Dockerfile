@@ -8,7 +8,7 @@ RUN pip --no-cache-dir install -r requirements.txt
 RUN apt-get install python-setuptools -y
 
 RUN apt-get update && apt-get -y install cmake protobuf-compiler
-
+RUN find /usr -iname 'CMakeLists.txt'
 RUN git clone --recursive https://github.com/dmlc/xgboost
 RUN cd xgboost
 RUN mkdir build
